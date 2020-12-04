@@ -5,7 +5,7 @@ inquirer
   .prompt([
     {
       type: 'input',
-      name: 'projectName',
+      name: 'projectTitle',
       message: `What's the title of your project?`,
     },
     {
@@ -18,12 +18,42 @@ inquirer
       name: 'installation',
       message: `How do you install the app?`,
     },
+
+    {
+        type: 'input',
+        name: 'Usage',
+        message: `How do you use your app?`,
+      },
+
+      {
+        type: 'input',
+        name: 'guidelines',
+        message: `Where are the contribution guidelines?`,
+      },
+
+      {
+        type: 'input',
+        name: 'test',
+        message: `what license is your app covered under?`,
+      },
+
+      {
+        type: 'input',
+        name: 'installation',
+        message: `How do you install the app?`,
+      },
+
+      {
+        type: 'input',
+        name: 'questions',
+        message: `How can I reach you?`,
+      },
     
   ])
   .then((response) => {
     console.log(response);
    
-    const readMeString = `# ${response.projectName}
+    const readMeString = `# ${response.projectTitle}
 
   ## Description
     
@@ -34,7 +64,7 @@ inquirer
   * [Installation](#Installation)
   * [Usage](#Usage)
   * [License](#License)
-  * [Contributing Guidelines](#Contributing-Guidelines)
+  * [Contributing Guidelines](#ContributingGuidlines)
   * [Tests](#Tests)
   * [Questions](#Questions)
   
@@ -44,26 +74,31 @@ inquirer
 
 
   ## Usage
+  ${response.usage}
 
 
   
   
   ## License
+  ${response.license}
 
 
   
   
   ## Contributing Guidelines
+  ${response.guidelines}
 
 
   
   
   ## Tests
+  ${response.test}
 
 
   
   
   ## Questions
+  ${response.questions}
 
 
   
