@@ -1,51 +1,77 @@
-// array of questions for user
-const inquirer = require("inquirer");
-const fs = require('fs'); [
-    inquirer
-    .prompt([
-        {
-            type: "input",
-            message: "What is your name?",
-            name: "name",
-          },
-        {
-            type: "list",
-            message: "What do you want to order?",
-            name: "dessert",
-            choices: ["Ice cream", "FroYo", "cake"]
-          },
+const inquirer = require('inquirer');
+const fs = require('fs');
+
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'projectName',
+      message: `What's the title of your project?`,
+    },
+    {
+      type: 'input',
+      name: 'description',
+      message: `What's a description for this project?`,
+    },
+    {
+      type: 'input',
+      name: 'installation',
+      message: `How do you install the app?`,
+    },
     
-      {
-        type: "list",
-        message: "Choose a flavor",
-        name: "iceCream",
-        choices: ["cookies and cream", "vanilla", "chocolate", "strawberry", "rhum raison", "pistachio"]
-      },
-      {
-        type: "list",
-        message: "Choose a topping",
-        name: "toppings",
-        choices: ["sprinkles", "caramel", "white chocolate chips", "mango",  "strawberries"]
-      },
-      {
-        type: "list",
-        message: "Choose a size",
-        name: "cake",
-        choices: ["small", "medium", "large", "extra large"]
-      },
-      
-    ])
+  ])
+  .then((response) => {
+    console.log(response);
+   
+    const readMeString = `# ${response.projectName}
 
-];
+  ## Description
+    
+    ${response.description}
 
-// function to write README file
-function writeToFile(fileName, data) {
-}
+  ## Table of contents
+  
+  * [Installation](#Installation)
+  * [Usage](#Usage)
+  * [License](#License)
+  * [Contributing Guidelines](#Contributing-Guidelines)
+  * [Tests](#Tests)
+  * [Questions](#Questions)
+  
+  ## Installation
+  ${response.installation}
 
-// function to initialize program
-function init() {
 
-}
 
-// function call to initialize program
-init();
+  ## Usage
+
+
+  
+  
+  ## License
+
+
+  
+  
+  ## Contributing Guidelines
+
+
+  
+  
+  ## Tests
+
+
+  
+  
+  ## Questions
+
+
+  
+  
+    
+  `
+
+    fs.writeFile('README.md', readMeString, 'utf8', (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
