@@ -20,34 +20,34 @@ inquirer
     },
 
     {
-        type: 'input',
-        name: 'Usage',
-        message: `How do you use your app?`,
-      },
+      type: 'input',
+      name: 'usage',
+      message: `How do you use your app?`,
+    },
 
-      {
-        type: 'input',
-        name: 'guidelines',
-        message: `Where are the contribution guidelines?`,
-      },
+    {
+      type: 'input',
+      name: 'guidelines',
+      message: `What are the contribution guidelines?`,
+    },
 
-      {
-        type: 'input',
-        name: 'test',
-        message: `what license is your app covered under?`,
-      },
+    {
+      type: 'input',
+      name: 'license',
+      message: `what license is your app covered under?`,
+    },
 
-      {
-        type: 'input',
-        name: 'installation',
-        message: `How do you install the app?`,
-      },
+    {
+      type: 'input',
+      name: 'test',
+      message: `How did you test your app?`,
+    },
 
-      {
-        type: 'input',
-        name: 'questions',
-        message: `How can I reach you?`,
-      },
+    {
+      type: 'input',
+      name: 'questions',
+      message: `How can I reach you?`,
+    },
     
   ])
   .then((response) => {
@@ -57,7 +57,7 @@ inquirer
 
   ## Description
     
-    ${response.description}
+  ${response.description}
 
   ## Table of contents
   
@@ -71,39 +71,21 @@ inquirer
   ## Installation
   ${response.installation}
 
-
-
   ## Usage
   ${response.usage}
 
-
-  
-  
   ## License
   ${response.license}
 
-
-  
-  
   ## Contributing Guidelines
   ${response.guidelines}
 
-
-  
-  
   ## Tests
   ${response.test}
 
-
-  
-  
   ## Questions
   ${response.questions}
-
-
   
-  
-    
   `
 
     fs.writeFile('README.md', readMeString, 'utf8', (err) =>
